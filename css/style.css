@@ -1,11 +1,25 @@
+body {
+    background-color: #dddddd;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
 }
 
 .icon-box {
-    border: 1px solid black;
-    padding: 15px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 25px; 
+    width: 250px;
+    height: 100px;
+}
+
+.icon-img {
+    font-size: 2rem;
 }
 
 .blue {
@@ -14,10 +28,6 @@
 
 .orange {
     color: #ffa500;
-}
-
-.violet {
-    color: #800080;
 }
 
 .green {

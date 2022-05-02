@@ -132,6 +132,8 @@ iconsInfo.forEach((element) => {
 
 
 
+
+
 // template html //
 /*
 <div class="icon-box">
