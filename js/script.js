@@ -119,15 +119,7 @@ const iconsContainer = document.querySelector(".container");
 console.log("iconsContainer", iconsContainer);
 
 iconsInfo.forEach((element) => {
-	iconsContainer.innerHTML += `
-	<div class="icon-box">
-    	<div class="icon-img ${element.color}">
-        	<i class="${element.family} ${element.prefix}${element.name}"></i>
-    	</div>
-    	<div class="icon-text">
-        	<span class="upper-case">${element.name}</span>
-    	</div>
-	</div>`;
+	generateIconBox(element);
 });
 
 const iconTypeSelect = document.getElementById("icons-type");
@@ -144,30 +136,29 @@ iconTypeSelect.addEventListener("change", function() {
 	//const filteredIcons = 
 	iconsInfo.filter((element) => {
 		if (element.type === userIconsTypeChoice) {
-		iconsContainer.innerHTML += `
-		<div class="icon-box">
-    		<div class="icon-img ${element.color}">
-        		<i class="${element.family} ${element.prefix}${element.name}"></i>
-    		</div>
-    		<div class="icon-text">
-        		<span class="upper-case">${element.name}</span>
-    		</div>
-		</div>`;
+			generateIconBox(element);
 		}
 	});
 
 	if (userIconsTypeChoice === "all") {
 		iconsInfo.forEach((element) => {
-			iconsContainer.innerHTML += `
-			<div class="icon-box">
-				<div class="icon-img ${element.color}">
-					<i class="${element.family} ${element.prefix}${element.name}"></i>
-				</div>
-				<div class="icon-text">
-					<span class="upper-case">${element.name}</span>
-				</div>
-			</div>`;
+			generateIconBox(element);
 		});
 	}
 
 });
+
+
+// FUNCTIONS
+
+function generateIconBox(object) {
+	iconsContainer.innerHTML += `
+	<div class="icon-box">
+		<div class="icon-img ${object.color}">
+			<i class="${object.family} ${object.prefix}${object.name}"></i>
+		</div>
+		<div class="icon-text">
+			<span class="upper-case">${object.name}</span>
+		</div>
+	</div>`;
+}
