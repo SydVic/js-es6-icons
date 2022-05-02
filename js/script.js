@@ -141,7 +141,8 @@ iconTypeSelect.addEventListener("change", function() {
 	iconsContainer.innerHTML = "";
 
 	// con filter aggiungo solo gli elementi della categoria scelta
-	const filteredIcons = iconsInfo.filter((element) => {
+	//const filteredIcons = 
+	iconsInfo.filter((element) => {
 		if (element.type === userIconsTypeChoice) {
 		iconsContainer.innerHTML += `
 		<div class="icon-box">
@@ -154,6 +155,19 @@ iconTypeSelect.addEventListener("change", function() {
 		</div>`;
 		}
 	});
-});
 
-// rimane da risolvere il problema quando si torna alla selezione di all
+	if (userIconsTypeChoice === "all") {
+		iconsInfo.forEach((element) => {
+			iconsContainer.innerHTML += `
+			<div class="icon-box">
+				<div class="icon-img ${element.color}">
+					<i class="${element.family} ${element.prefix}${element.name}"></i>
+				</div>
+				<div class="icon-text">
+					<span class="upper-case">${element.name}</span>
+				</div>
+			</div>`;
+		});
+	}
+
+});
