@@ -121,36 +121,39 @@ console.log("iconsContainer", iconsContainer);
 iconsInfo.forEach((element) => {
 	iconsContainer.innerHTML += `
 	<div class="icon-box">
-    <div class="icon-img ${element.color}">
-        <i class="${element.family} ${element.prefix}${element.name}"></i>
-    </div>
-    <div class="icon-text">
-        <span class="upper-case">${element.name}</span>
-    </div>
-</div>`;
+    	<div class="icon-img ${element.color}">
+        	<i class="${element.family} ${element.prefix}${element.name}"></i>
+    	</div>
+    	<div class="icon-text">
+        	<span class="upper-case">${element.name}</span>
+    	</div>
+	</div>`;
 });
 
 const iconTypeSelect = document.getElementById("icons-type");
 iconTypeSelect.addEventListener("change", function() {
+
+	// prelevo il filtro scelto dall'utente
 	const userIconsTypeChoice = document.getElementById("icons-type").value;
 	console.log("userIconsTypeChoice", userIconsTypeChoice);
 
-	let filteredIcons = iconsInfo.filter((element) => element.type === userIconsTypeChoice);
+	// pulisco il container per evitare che le icone scelte si aggiungano a quelle già presenti
+	iconsContainer.innerHTML = "";
 
-	console.table("filteredIcons", filteredIcons);
-
-
+	// con filter aggiungo solo gli elementi della categoria scelta
+	const filteredIcons = iconsInfo.filter((element) => {
+		if (element.type === userIconsTypeChoice) {
+		iconsContainer.innerHTML += `
+		<div class="icon-box">
+    		<div class="icon-img ${element.color}">
+        		<i class="${element.family} ${element.prefix}${element.name}"></i>
+    		</div>
+    		<div class="icon-text">
+        		<span class="upper-case">${element.name}</span>
+    		</div>
+		</div>`;
+		}
+	});
 });
 
-
-// template html //
-/*
-<div class="icon-box">
-    <div class="icon-img">
-        <i class="fas fa-cat"></i>
-    </div>
-    <div class="icon-text">
-        <span class="upper-case">cat</span>
-    </div>
-</div>
-*/
+// rimane da risolvere il problema quando si torna alla selezione di all
