@@ -130,8 +130,17 @@ iconsInfo.forEach((element) => {
 </div>`;
 });
 
+const iconTypeSelect = document.getElementById("icons-type");
+iconTypeSelect.addEventListener("change", function() {
+	const userIconsTypeChoice = document.getElementById("icons-type").value;
+	console.log("userIconsTypeChoice", userIconsTypeChoice);
+
+	let filteredIcons = iconsInfo.filter((element) => element.type === userIconsTypeChoice);
+
+	console.table("filteredIcons", filteredIcons);
 
 
+});
 
 
 // template html //
