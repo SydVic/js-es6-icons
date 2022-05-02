@@ -1,5 +1,27 @@
 .container {
     display: flex;
+    flex-wrap: wrap;
+}
+
+.icon-box {
+    border: 1px solid black;
+    padding: 15px 50px;
+}
+
+.blue {
+    color: #0000ff;
+}
+
+.orange {
+    color: #ffa500;
+}
+
+.violet {
+    color: #800080;
+}
+
+.green {
+    color: #008000;
 }
 
 .icon-text {

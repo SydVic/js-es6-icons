@@ -121,7 +121,7 @@ console.log("iconsContainer", iconsContainer);
 iconsInfo.forEach((element) => {
 	iconsContainer.innerHTML += `
 	<div class="icon-box">
-    <div class="icon-img">
+    <div class="icon-img ${element.color}">
         <i class="${element.family} ${element.prefix}${element.name}"></i>
     </div>
     <div class="icon-text">
