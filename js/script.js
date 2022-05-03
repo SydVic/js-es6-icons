@@ -114,12 +114,32 @@ const iconsInfo = [
 ];
 
 const iconsContainer = document.querySelector(".container");
+const iconTypeSelect = document.getElementById("icons-type");
 
+
+// creaimo in modo dinamico le option per il select, cosi se vengono inserite nuove tipologie di icone vengono aggiunte in automatico nella selezione
+const typesArray = [];
+iconsInfo.forEach(element => {
+	const currentType = element.type;
+	if ( !typesArray.includes(currentType) ) {
+		typesArray.push(currentType);
+	}
+});
+console.log(typesArray);
+
+// stampiamo in html le option del select
+typesArray.forEach( type => {
+	const option =`<option value="${type}">${type}</option>`;
+	console.log(option);
+	iconTypeSelect.innerHTML += option;
+})
+
+// generiamo all'avvio della pagina tutti gli elementi
 iconsInfo.forEach((element) => {
 	generateIconBox(element);
 });
 
-const iconTypeSelect = document.getElementById("icons-type");
+// al cambiamento della selezione del tipo di icona ristampo 
 iconTypeSelect.addEventListener("change", function() {
 
 	// prelevo il filtro scelto dall'utente
