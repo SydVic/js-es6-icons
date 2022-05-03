@@ -113,10 +113,7 @@ const iconsInfo = [
 	}
 ];
 
-//Milestone 1
-// Partendo dalla struttura dati fornita, visualizzare in pagina un box per ogni icona, in cui è presente il nome dell'icona e l'icona stessa.
 const iconsContainer = document.querySelector(".container");
-console.log("iconsContainer", iconsContainer);
 
 iconsInfo.forEach((element) => {
 	generateIconBox(element);
@@ -126,31 +123,33 @@ const iconTypeSelect = document.getElementById("icons-type");
 iconTypeSelect.addEventListener("change", function() {
 
 	// prelevo il filtro scelto dall'utente
-	const userIconsTypeChoice = document.getElementById("icons-type").value;
-	console.log("userIconsTypeChoice", userIconsTypeChoice);
+	const userIconsTypeChoice = this.value;
 
 	// pulisco il container per evitare che le icone scelte si aggiungano a quelle già presenti
 	iconsContainer.innerHTML = "";
 
-	// con filter aggiungo solo gli elementi della categoria scelta
-	//const filteredIcons = 
-	iconsInfo.filter((element) => {
-		if (element.type === userIconsTypeChoice) {
-			generateIconBox(element);
-		}
-	});
-
+	// se viene selezionato all stampo tutto
 	if (userIconsTypeChoice === "all") {
 		iconsInfo.forEach((element) => {
 			generateIconBox(element);
 		});
+	// altrimenti stampo solo quelli della categoria scelta
+	} else {
+		iconsInfo.filter((element) => {
+			if (element.type === userIconsTypeChoice) {
+				generateIconBox(element);
+			}
+		});
 	}
-
 });
-
 
 // FUNCTIONS
 
+/**
+ * Description
+ * @param {any} object
+ * @returns {any}
+ */
 function generateIconBox(object) {
 	iconsContainer.innerHTML += `
 	<div class="icon-box">
@@ -162,3 +161,9 @@ function generateIconBox(object) {
 		</div>
 	</div>`;
 }
+
+// per fare color dinamico e non dover fare le classi in CSS
+// element.style.color = object.color
+
+// oppure anche con template literal
+// style="color: ${object.color}"
